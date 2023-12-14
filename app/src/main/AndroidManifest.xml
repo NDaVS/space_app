@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Spaceapp"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
-            android:name=".astronauts"
+            android:name=".Astronauts"
             android:exported="false" />
         <activity
             android:name=".Mars_Photo"
             android:exported="false" />
         <activity
-            android:name=".apod"
+            android:name=".APOD"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

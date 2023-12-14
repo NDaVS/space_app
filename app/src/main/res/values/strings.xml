@@ -5,4 +5,5 @@
     <string name="mars_photo">Mars Photo</string>
     <string name="astronauts">Astronauts</string>
     <string name="apod">APOD</string>
+    <string name="desc">Desc</string>
 </resources>
