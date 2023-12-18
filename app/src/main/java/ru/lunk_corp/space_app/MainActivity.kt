@@ -3,13 +3,12 @@ package ru.lunk_corp.space_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import ru.lunk_corp.space_app.ViewModels.mainViewModel
+import ru.lunk_corp.space_app.ViewModels.MainViewModel
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewModel: mainViewModel
+//    private lateinit var viewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,10 +17,11 @@ class MainActivity : AppCompatActivity() {
         val mars_photo:TextView = findViewById(R.id.mars_photo)
         val astronauts:TextView = findViewById(R.id.astronauts)
 
-        viewModel = ViewModelProvider(this)[mainViewModel::class.java]
+    var viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        apod_button.setOnClickListener {
-            startActivity(Intent(this, APOD::class.java))
+    apod_button.setOnClickListener {
+            viewModel.getAPOD()
+            startActivity(viewModel.apodIntent)
         }
 
         mars_photo.setOnClickListener {

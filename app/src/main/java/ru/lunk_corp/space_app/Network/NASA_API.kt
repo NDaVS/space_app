@@ -11,8 +11,8 @@ import ru.lunk_corp.space_app.Models.APOD_response
 
 
 class NASA_API() {
-    private val apod_url:String  = "https://api.nasa.gov/planetary/apod"
-    private val photo_url:String  = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
+    private val apod_url:String  = "https://api.nasa.gov/"
+    private val photo_url:String  = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos/"
     private val interceptor = HttpLoggingInterceptor()
     private val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
     private val retrofit_apod = Retrofit.Builder()
@@ -20,12 +20,12 @@ class NASA_API() {
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
-    private val retrofit_photo = Retrofit.Builder()
-        .baseUrl(photo_url)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
-    private val apod_api: APODApiService = retrofit_apod.create(APODApiService::class.java)
+//    private val retrofit_photo = Retrofit.Builder()
+//        .baseUrl(photo_url)
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .client(client)
+//        .build()
+    private val apod_api = retrofit_apod.create(APODApiService::class.java)
 
     fun getApodApi(): APODApiService{
         return this.apod_api
