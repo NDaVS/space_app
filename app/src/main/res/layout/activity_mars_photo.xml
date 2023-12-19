@@ -8,7 +8,7 @@
     tools:context=".APOD">
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/photo_description"
         android:layout_width="374dp"
         android:layout_height="262dp"
         android:fontFamily="@font/odor_mean_chey"
@@ -52,7 +52,7 @@
 
     <ImageView
 
-        android:id="@+id/imageView"
+        android:id="@+id/photo_exit_button"
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:background="@drawable/exit_button"

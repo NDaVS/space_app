@@ -1,5 +1,7 @@
 package ru.lunk_corp.space_app
 
+import android.app.Activity
+import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,10 +20,14 @@ class MainActivity : AppCompatActivity() {
         val astronauts:TextView = findViewById(R.id.astronauts)
 
     var viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
+    viewModel.apod_Data.observe(this){
+        intent = Intent(this, APOD::class.java)
+        intent.putExtra("apod", it)
+        startActivity(intent)
+    }
     apod_button.setOnClickListener {
             viewModel.getAPOD()
-            startActivity(viewModel.apodIntent)
+
         }
 
         mars_photo.setOnClickListener {
