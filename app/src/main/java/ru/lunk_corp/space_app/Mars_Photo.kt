@@ -14,8 +14,11 @@ class Mars_Photo : AppCompatActivity() {
 
         val marsPhoto: ImageView = findViewById(R.id.photo_2023_)
         val description: TextView = findViewById(R.id.photo_description)
+        val exit:ImageView = findViewById(R.id.photo_exit_button)
 
-
+        exit.setOnClickListener {
+            finish()
+        }
 
     }
 }

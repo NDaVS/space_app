@@ -11,24 +11,19 @@ import ru.lunk_corp.space_app.Models.APOD_response
 
 
 class NASA_API() {
-    private val apod_url:String  = "https://api.nasa.gov/"
-    private val photo_url:String  = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos/"
+    private val url:String  = "https://api.nasa.gov/"
     private val interceptor = HttpLoggingInterceptor()
     private val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-    private val retrofit_apod = Retrofit.Builder()
-        .baseUrl(apod_url)
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(url)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
-//    private val retrofit_photo = Retrofit.Builder()
-//        .baseUrl(photo_url)
-//        .addConverterFactory(GsonConverterFactory.create())
-//        .client(client)
-//        .build()
-    private val apod_api = retrofit_apod.create(APODApiService::class.java)
+
+    private val api = retrofit.create(APODApiService::class.java)
 
     fun getApodApi(): APODApiService{
-        return this.apod_api
+        return this.api
     }
     interface APODCallback{
         fun onSuccess(response: APOD_response)
@@ -37,7 +32,7 @@ class NASA_API() {
     }
 
     fun getAPOD(callback: APODCallback){
-        apod_api.getAPOD("THcIfmHCbVa60dyWgISdYogXuTTbm9ZpoI9yv7xe")
+        api.getAPOD("THcIfmHCbVa60dyWgISdYogXuTTbm9ZpoI9yv7xe")
             .enqueue(object : Callback<APOD_response>{
                 override fun onResponse(
                     call: Call<APOD_response>,
@@ -55,4 +50,6 @@ class NASA_API() {
                 }
             })
     }
+
+//    fun getMarsPhoto()
 }

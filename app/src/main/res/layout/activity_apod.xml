@@ -7,23 +7,11 @@
     android:background="@drawable/apod_bg"
     tools:context=".APOD">
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="374dp"
-        android:layout_height="262dp"
-        android:text="@string/desc"
-        android:fontFamily="@font/odor_mean_chey"
-        android:textAppearance="@style/description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868" />
+
 
     <ImageView
 
-        android:id="@+id/imageView"
+        android:id="@+id/apod_exit"
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:background="@drawable/exit_button"
@@ -41,13 +29,14 @@
         android:layout_width="370dp"
         android:layout_height="269dp"
 
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
         android:src="@drawable/img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233"
-        android:contentDescription="TODO" />
+        app:layout_constraintVertical_bias="0.233" />
 
     <TextView
         android:id="@+id/photo_name"
@@ -65,4 +54,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044" />
+
+    <ScrollView
+        android:layout_width="370dp"
+        android:layout_height="312dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_2023_"
+        app:layout_constraintVertical_bias="0.285">
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="374dp"
+            android:layout_height="262dp"
+
+            android:text="@string/desc"
+            android:textAppearance="@style/description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.868" />
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val mars_photo:TextView = findViewById(R.id.mars_photo)
         val astronauts:TextView = findViewById(R.id.astronauts)
 
-    var viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+    var viewModel = ViewModelProvider(this)[MainViewModel::class.java]
     viewModel.apod_Data.observe(this){
         intent = Intent(this, APOD::class.java)
         intent.putExtra("apod", it)
