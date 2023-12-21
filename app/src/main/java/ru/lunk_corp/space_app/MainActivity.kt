@@ -25,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("apod", it)
         startActivity(intent)
     }
+
+    val astro_viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+    astro_viewModel.astro_data.observe(this){
+        intent = Intent(this, Astronauts::class.java)
+        intent.putExtra("astro", it)
+        startActivity(intent)
+    }
     apod_button.setOnClickListener {
             viewModel.getAPOD()
 
@@ -35,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         astronauts.setOnClickListener {
-            startActivity(Intent(this, Astronauts::class.java))
+            astro_viewModel.getAstro()
         }
 
     }

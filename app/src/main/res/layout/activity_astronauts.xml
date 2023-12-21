@@ -12,7 +12,6 @@
         android:layout_width="374dp"
         android:layout_height="262dp"
         android:text="Desc"
-        android:fontFamily="@font/odor_mean_chey"
         android:textAppearance="@style/description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
