@@ -6,8 +6,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import ru.lunk_corp.space_app.Models.APOD_response
+import ru.lunk_corp.space_app.Models.Photos
 
 
 class NASA_API() {
@@ -20,13 +20,19 @@ class NASA_API() {
         .client(client)
         .build()
 
-    private val api = retrofit.create(APODApiService::class.java)
+    private val api = retrofit.create(NASAApiService::class.java)
 
-    fun getApodApi(): APODApiService{
+    fun getApodApi(): NASAApiService{
         return this.api
     }
     interface APODCallback{
         fun onSuccess(response: APOD_response)
+        fun onError()
+        fun onFailure(error:Throwable)
+    }
+
+    interface RoverPhotoCallBack{
+        fun onSuccess(response: Photos)
         fun onError()
         fun onFailure(error:Throwable)
     }
@@ -51,5 +57,24 @@ class NASA_API() {
             })
     }
 
-//    fun getMarsPhoto()
+    fun getMarsPhoto(callback: RoverPhotoCallBack){
+        //добавить случайную генерацию дней и страниц
+        api.getMarsPhoto("THcIfmHCbVa60dyWgISdYogXuTTbm9ZpoI9yv7xe", 1500, 2)
+            .enqueue(object: Callback<Photos>{
+                override fun onResponse(
+                call: Call<Photos>,
+                response: Response<Photos>
+                ) {
+                    if(response.isSuccessful){
+                        callback.onSuccess(response.body()!!)
+                    } else {
+                        callback.onError()
+                    }
+                }
+
+                override fun onFailure(call: Call<Photos>, t: Throwable) {
+                    callback.onFailure(t)
+                }
+            })
+    }
 }

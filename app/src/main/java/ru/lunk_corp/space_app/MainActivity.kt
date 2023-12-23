@@ -19,10 +19,15 @@ class MainActivity : AppCompatActivity() {
         val mars_photo:TextView = findViewById(R.id.mars_photo)
         val astronauts:TextView = findViewById(R.id.astronauts)
 
-    var viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+    val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
     viewModel.apod_Data.observe(this){
         intent = Intent(this, APOD::class.java)
         intent.putExtra("apod", it)
+        startActivity(intent)
+    }
+    viewModel.mars_data.observe(this){
+        intent = Intent(this, Mars_Photo::class.java)
+        intent.putExtra("data", it)
         startActivity(intent)
     }
 
@@ -38,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mars_photo.setOnClickListener {
-            startActivity(Intent(this, Mars_Photo::class.java))
+            viewModel.getMarsPhoto()
         }
 
         astronauts.setOnClickListener {
