@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 
-class marsPhotoViewModel(val context: Application) : AndroidViewModel(context) {
+class marsPhotoViewModel(private val context: Application) : AndroidViewModel(context) {
     fun getMarsPhoto(imageView: ImageView, url: String) {
         Glide.with(context)
             .asBitmap()
