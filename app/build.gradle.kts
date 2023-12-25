@@ -45,6 +45,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.google.code.gson:gson:2.10")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.squareup.picasso:picasso:2.8")
 
 
     implementation("androidx.appcompat:appcompat:1.6.1")

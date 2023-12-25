@@ -8,11 +8,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.lunk_corp.space_app.Models.APOD_response
 import ru.lunk_corp.space_app.Models.Photos
+import kotlin.random.Random
 
 
 class NASA_API() {
     private val url:String  = "https://api.nasa.gov/"
-    private val interceptor = HttpLoggingInterceptor()
+    private val interceptor = HttpLoggingInterceptor().apply {
+        this.level = HttpLoggingInterceptor.Level.BODY
+    }
     private val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
     private val retrofit = Retrofit.Builder()
         .baseUrl(url)
@@ -59,7 +62,7 @@ class NASA_API() {
 
     fun getMarsPhoto(callback: RoverPhotoCallBack){
         //добавить случайную генерацию дней и страниц
-        api.getMarsPhoto("THcIfmHCbVa60dyWgISdYogXuTTbm9ZpoI9yv7xe", 1500, 2)
+        api.getMarsPhoto("THcIfmHCbVa60dyWgISdYogXuTTbm9ZpoI9yv7xe", Random.nextInt(1000, 2500), Random.nextInt(1, 3))
             .enqueue(object: Callback<Photos>{
                 override fun onResponse(
                 call: Call<Photos>,
