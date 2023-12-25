@@ -2,6 +2,7 @@ package ru.lunk_corp.space_app.ViewModels
 
 import android.app.Application
 import android.content.Intent
+import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -29,11 +30,11 @@ class MainViewModel(private val context: Application) : AndroidViewModel(context
             }
 
             override fun onError() {
-                TODO("Not yet implemented")
+                Log.ERROR
             }
 
             override fun onFailure(error: Throwable) {
-                TODO("Not yet implemented")
+                Log.ERROR
             }
         })
 
@@ -45,11 +46,11 @@ class MainViewModel(private val context: Application) : AndroidViewModel(context
             }
 
             override fun onError() {
-                TODO("Not yet implemented")
+                Log.ERROR
             }
 
             override fun onFailure(error: Throwable) {
-                TODO("Not yet implemented")
+                Log.ERROR
             }
         })
     }
@@ -61,11 +62,11 @@ class MainViewModel(private val context: Application) : AndroidViewModel(context
             }
 
             override fun onError() {
-                TODO()
+                Log.ERROR
             }
 
             override fun onFailure(error: Throwable) {
-                TODO()
+                Log.ERROR
             }
         })
     }
